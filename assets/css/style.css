@@ -26,4 +26,12 @@
 .card-group{
     margin: 10%;
 }
+.card-img-top:hover{
+	transform: scale(1.05);
+	transition: 0.2s all;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.495);
+}
+.card-body{
+	border:solid 1px black;
+}
 
