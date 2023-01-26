@@ -90,6 +90,7 @@ body {
 /* ====== Contato ====== */
 .card-group {
 	margin: 10%;
+	text-decoration: none;
 }
 .card-img-top{
 	border-radius: 50%;
@@ -110,4 +111,9 @@ body {
 .card{
 	border-radius: 50%;
 	background-color: lightgray;
+}
+
+.linksContato{
+	text-decoration: none;
+	color: inherit;
 }
