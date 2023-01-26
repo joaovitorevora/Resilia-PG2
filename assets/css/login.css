@@ -26,61 +26,13 @@ body {
     font-weight: bold;
     color: #1E1E1E;
 }
+#marginbtn{
+    margin: 30%;
+}
 
-input[type=text] {
-    background-color: #D9D9D9;
-    border: none;
-    border-bottom: 2px solid #000000;
-    border-top: 0px;
+#password{
+    border-radius: 0px; 
+}
+#floatingInput{
     border-radius: 0px;
-    font-weight: bold;
-    outline: 0;
-    margin-bottom: 20px;
-    padding-left: 0px;
-    color: #ECF0F5;
-}
-
-input[type=password] {
-    background-color: #D9D9D9;
-    border: none;
-    border-bottom: 2px solid #000000;
-    border-top: 0px;
-    border-radius: 0px;
-    font-weight: bold;
-    outline: 0;
-    padding-left: 0px;
-    margin-bottom: 20px;
-    color: #ECF0F5;
-}
-
-.form-group {
-    margin-bottom: 40px;
-    outline: 0px;
-    width: 524px;
-}
-
-.form-group1{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-top: -40px;
-}
-
-.btn-outline-primary {    
-    border-color: #29754D;
-    color: white;
-    background-color: #29754D;
-    border-radius: 10px;
-    width: 200px;
-    height: 66px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border: 55px;   
-}
-
-.login-btm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 55px;
 }
