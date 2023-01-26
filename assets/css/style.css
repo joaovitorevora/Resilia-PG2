@@ -106,3 +106,8 @@ body {
 .textCard{
 	font-size: 14px;
 }
+
+.card{
+	border-radius: 50%;
+	background-color: lightgray;
+}
