@@ -1,0 +1,101 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+body {
+	background-image: url(../img/BG\ MAIN.png);
+	font-family: 'Roboto', sans-serif;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+/* ======Header======= */
+
+.nav-link {
+	color: rgba(255, 255, 255, 0.512);
+	border-radius: 5px;
+	width: fit-content;
+	padding: 5px;
+}
+.nav-link:hover {
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+}
+
+.active {
+	width: fit-content;
+	padding: 5px;
+	color: rgb(255 255 255) !important;
+	background-color: rgb(0 103 56);
+	border-radius: 5px;
+	font-weight: bold;
+	border: solid 1px #198754;
+	text-transform: uppercase;
+}
+
+/* ======Index======= */
+.bs-icon {
+	--bs-icon-size: 0.75rem;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+	font-size: var(--bs-icon-size);
+	width: calc(var(--bs-icon-size) * 2);
+	height: calc(var(--bs-icon-size) * 2);
+	color: var(--bs-primary);
+}
+.bs-icon-xs {
+	--bs-icon-size: 1rem;
+	width: calc(var(--bs-icon-size) * 1.5);
+	height: calc(var(--bs-icon-size) * 1.5);
+}
+.bs-icon-sm {
+	--bs-icon-size: 1rem;
+}
+.bs-icon-md {
+	--bs-icon-size: 1.5rem;
+}
+.bs-icon-lg {
+	--bs-icon-size: 2rem;
+}
+.bs-icon-xl {
+	--bs-icon-size: 2.5rem;
+}
+.bs-icon.bs-icon-primary {
+	color: var(--bs-white);
+	background: var(--bs-primary);
+}
+.bs-icon.bs-icon-primary-light {
+	color: var(--bs-primary);
+	background: rgba(var(--bs-primary-rgb), 0.2);
+}
+.bs-icon.bs-icon-semi-white {
+	color: var(--bs-primary);
+	background: rgba(255, 255, 255, 0.5);
+}
+.bs-icon.bs-icon-rounded {
+	border-radius: 0.5rem;
+}
+.bs-icon.bs-icon-circle {
+	border-radius: 50%;
+}
+
+/* ====== Contato ====== */
+.card-group {
+	margin: 10%;
+}
+.card-img-top:hover {
+	transform: scale(1.05);
+	transition: 0.2s all;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.495);
+}
+.card-body {
+	border: solid 1px black;
+}
