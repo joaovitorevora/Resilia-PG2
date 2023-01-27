@@ -88,21 +88,17 @@ body {
 }
 
 /* ====== Contato ====== */
-.cards{
-}
+
 .card{
-	display: flex;
-	align-items: center;
 	margin: 20px;
 	margin-top: 5%;
 	height: 330px;
-	width: 240px;
+	width: 230px;
+	transform-style: preserve-3d ;
+	transition: all .5s;
 	background-color: lightgray;
 }
-.card-img-top {
-	height: 250px;
-	width: 180px;
-}
+
 .card-img-top:hover{
 	transform: scale(1.05);
 	transition: 0.2s all;
@@ -119,3 +115,22 @@ body {
 .card-body{
 	width: 100%;
 }
+.face{
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+
+}
+
+#front{
+
+	transform: rotateY(180deg);
+}
+#back{
+	backface-visibility: hidden;
+}
+.flip{
+	transform: rotateY(180deg);
+} */
