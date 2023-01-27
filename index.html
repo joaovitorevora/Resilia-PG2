@@ -27,6 +27,7 @@
 
 		<!-- main stylesheet -->
 		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="stylesheet" href="./assets/css/chatbot.css" />
 	</head>
 	<body>
 		<header>
@@ -208,6 +209,54 @@
 			</div>
 		</main>
 
+		<!-- Five Section: ChatBot -->
+		<section>
+			<div class="container">
+				<div class="gridChatBot position-fixed shadow overflow-hidden rounded-3 text-light z-3">
+					<div class="d-flex flex-column position-relative w-100 h-100">
+						<div class="chatHeader d-flex px-2 py-2 align-items-center bg-success">
+							<h4>Chatbot - Enterprise AI</h4>
+							<span class="btnCloseChat position-absolute fs-3"><i class="bi bi-x"></i></span>
+						</div>
+						<div class="chatBody d-flex flex-column bg-light flex-grow-1 h-100">
+							<div
+								id="messagesList"
+								class="messagesList position-relative d-flex flex-column overflow-y-auto overflow-x-hidden p-2 bg-light flex-shrink-1 flex-grow-1">
+								<div class="bot d-flex mb-2">
+									<img
+										src="./assets/img//chatbot/logoBot.jpg"
+										class="rounded"
+										style="width: 32px; height: 32px"
+										alt="bot" />
+									<div class="text-bg-secondary p-2 rounded-3 d-flex flex-column">
+										Olá, como posso ajudar? Sou um bot amiguinho
+										<span class="time text-end">10:00</span>
+									</div>
+								</div>
+
+								
+							</div>
+							<div
+								class="position-relative w-100 flex-shrink-0 flex-grow-0 py-3 border-top bg-light">
+								<textarea
+									id="inputMsg"
+									class="inputMsg bg-light w-75 mx-3 px-1 mx-2 rounded-1 border border-secundary border-opacity-25"
+									placeholder="Qual sua demanda hoje?"></textarea>
+
+								<button id="sendBtn" class="sendBtn position-absolute fs-4 text-success">
+									<i class="bi bi-send-fill"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="openChat position-fixed z-2 fs-5 bg-success text-light rounded-circle text-center p-sm-2 shadow">
+					<i class="bi bi-chat-dots-fill"></i>
+				</div>
+			</div>
+		</section>
+
 		<footer class="text-center py-4">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-lg-3">
@@ -254,5 +303,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 		<!-- main js -->
 		<script src="./assets/js/script.js"></script>
+		<script src="./assets/js/chatbot.js"></script>
 	</body>
 </html>
