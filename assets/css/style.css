@@ -88,32 +88,34 @@ body {
 }
 
 /* ====== Contato ====== */
-.card-group {
-	margin: 10%;
-	text-decoration: none;
+.cards{
 }
-.card-img-top{
-	border-radius: 50%;
+.card{
+	display: flex;
+	align-items: center;
+	margin: 20px;
+	margin-top: 5%;
+	height: 330px;
+	width: 240px;
+	background-color: lightgray;
+}
+.card-img-top {
+	height: 250px;
+	width: 180px;
 }
 .card-img-top:hover{
 	transform: scale(1.05);
 	transition: 0.2s all;
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.495);
 }
-
-.card-body {
-	background-color: lightgray;
-}
 .textCard{
 	font-size: 14px;
 }
-
-.card{
-	border-radius: 50%;
-	background-color: lightgray;
-}
-
 .linksContato{
 	text-decoration: none;
 	color: inherit;
+}
+
+.card-body{
+	width: 100%;
 }
