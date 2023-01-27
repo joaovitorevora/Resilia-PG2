@@ -12,9 +12,9 @@ $(document).ready(function () {
 
 
 
-// let hourNow = new Date().toLocaleTimeString().split(':');
-// hourNow = [hourNow[0], hourNow[1]].join(':');
-// let resquest = $('#inputMsg')
+let hourNow = new Date().toLocaleTimeString().split(':');
+hourNow = [hourNow[0], hourNow[1]].join(':');
+let resquest = $('#inputMsg')
 
 // const BotResponse = () => {
 // 	const responses = {
@@ -57,9 +57,10 @@ $('#sendBtn').on('click', function () {
     case true:
 		$(this).css('animation', 'send 1.5s 0.2s both');
 		setTimeout(() => {
-			$(this).removeAttr('style');
+      $(this).removeAttr('style');
+        UserRequest();
     }, 1500);
-  UserRequest();
+
       break;
     case false: {
       resquest.attr('placeholder', 'Digite uma mensagem!')
