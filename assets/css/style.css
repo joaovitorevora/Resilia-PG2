@@ -89,6 +89,7 @@ body {
 
 /* ====== Contato ====== */
 
+
 .card{
 	margin: 20px;
 	margin-top: 5%;
@@ -98,6 +99,7 @@ body {
 	transition: all .5s;
 	background-color: lightgray;
 }
+
 
 .card-img-top:hover{
 	transform: scale(1.05);
@@ -116,21 +118,22 @@ body {
 	width: 100%;
 }
 .face{
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	border: solid 3px red;
 	position: absolute;
 
 }
 
 #front{
-
+	transform-style: preserve-3d;
 	transform: rotateY(180deg);
+
 }
 #back{
+	background-color: red;
+	transform: rotateY(0deg);
+	transform-style: preserve-3d!important;
 	backface-visibility: hidden;
 }
 .flip{
 	transform: rotateY(180deg);
-} */
+}
