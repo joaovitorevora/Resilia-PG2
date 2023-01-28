@@ -118,7 +118,6 @@ body {
 	width: 100%;
 }
 .face{
-	border: solid 3px red;
 	position: absolute;
 
 }
@@ -129,7 +128,7 @@ body {
 
 }
 #back{
-	background-color: red;
+	background-color: lightgray;
 	transform: rotateY(0deg);
 	transform-style: preserve-3d!important;
 	backface-visibility: hidden;

@@ -17,9 +17,11 @@ $(document).ready(() => {
 
 });
 // Contato -----------
-const card = document.querySelector('.card')
-card.addEventListener("click",(e)=>{
-	card.classList.toggle("flip")
-})
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        card.classList.toggle("flip");
+    });
+});
 
 
