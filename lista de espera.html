@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - ChatBot</title>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <!-- bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-dark navbar-expand-md bg-success bounce animated">
+      <div class="container-fluid justify-content-between">
+        <a class="navbar-brand d-flex align-items-center" href="#"
+          ><span
+            class="bs-icon-md bs-icon-circle bs-icon-primary bg-dark d-flex justify-content-center align-items-center me-2 bs-icon"
+            ><i class="bi bi-bezier"></i
+          ></span>
+          Enterprise IA </a
+        ><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
+          <span class="visually-hidden">Abrir menu</span><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navcol-3">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="./index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="./assinatura.html">Assinatura</a></li>
+            <li class="nav-item"><a class="nav-link" href="./contato.html">Sobre</a></li>
+          </ul>
+          <a class="btn btn-dark" href="./login.html">Login</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <main>
+        <div class="container">
+            <div class="login-box w-75 d-flex align-items-center">
+                <div class="col-lg-12 login-title1 "> <!-- Ajuste titulo principal -->
+                    Lista de Espera
+                </div>
+                <!-- criação formulário -->
+                    <!-- <form class=" d- form-horizontal w-100 ">
+                        <div class="instrucaop d-flex ">
+                            <p><h11>*</h11> Campos Obrigatórios </p>                        
+                        </div> -->
+                    <!-- linha 1-->
+                        <div class="linha w-100 d-flex align-items-center"> 
+                            <div class="instrucaop w-50 ">
+                                <input id="Nome" name="Nome" placeholder="Nome*" class="form-control input-md" required="" type="text">
+                            </div>                                                            
+                            <div class="instrucaop w-50">
+                                <input id="prependedtext" name="prependedtext" class="form-control" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                            </div>                                                      
+                        </div>
+                    <!-- linha 2-->
+                        <div class="linha w-100 d-flex align-items-center">   
+                            <div class="instrucaop w-50 bg-transparent border-0 border-bottom border-success"> 
+                                <input id="rg" name="rg" placeholder="RG- Apenas números*" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
+                            </div>
+                            <div class="instrucaop w-50">                                  
+                                <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                            </div>
+                        </div>
+                    <!-- linha 3-->
+                    <div class="linha w-100 d-flex align-items-center"> 
+                        <div class="instrucaop w-50">
+                            <input type="password" class="form-control bg-transparent border-0 border-bottom border-success" id="password" minlength="6" maxlength="12" onKeyUp="verificaForcaSenha();"placeholder="Digite a senha">
+                        </div>
+                        <div class="instrucaop w-50">
+                            <input type="password" class="form-control bg-transparent border-0 border-bottom border-success" id="password" minlength="6" maxlength="12" onKeyUp="verificaForcaSenha();" placeholder="Confirme a senha">
+                        </div>                        
+                    </div>
+                    <span id="password-status"></span>
+                    <!-- linha 4-->
+                        <div class="linha w-100 d-flex align-items-center">
+                            <div class="instrucaop w-75">
+                                <input id="cep" name="cep" placeholder="CEP- Apenas números" class="form-control input-md" required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
+                            </div>
+                        <div class="instrucaop w-25">
+                            <button type="button" class="btn btn-primary" onclick="pesquisacep(cep.value)">Pesquisar</button>
+                        </div>
+                    </div>
+                    <!-- linha 5-->
+                    <div class="linha w-100 d-flex align-items-center">
+                        <div class="instrucaop w-50">
+                            <input id="rua" name="rua" class="form-control" placeholder="Rua" required="" readonly="readonly" type="text">
+                        </div>                          
+                        <div class="instrucaop w-50">
+                            <input id="numero" name="numero" class="form-control" placeholder="Numero" required=""  type="text">
+                        </div>                          
+                    </div>
+                    <!-- linha 6-->
+                    <div class="linha w-100 d-flex align-items-center">
+                        <div class="instrucaop w-50">
+                            <input id="cidade" placeholder="Cidade" name="cidade" class="form-control" placeholder="" required=""  readonly="readonly" type="text">
+                        </div>
+                        <div class="instrucaop w-50 ">
+                            <input id="estado" name="estado" placeholder="Estado" class="form-control" placeholder="" required=""  readonly="readonly" type="text">
+                        </div>
+                    </div>                
+                </form>        
+            </div>
+        </div>        
+    </main>
+  <!-- bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="./assets/js/login.js"></script>
+</body>
+</html>
