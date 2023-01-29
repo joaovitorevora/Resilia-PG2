@@ -43,9 +43,9 @@
 	}
 }
 
-::placeholder{
+::placeholder {
 	text-align: center;
-	padding: 10px 0
+	padding: 10px 0;
 }
 .btnCloseChat,
 .openChat {
@@ -66,6 +66,7 @@
 	display: none;
 	height: 500px;
 	max-width: 300px;
+	min-width: 300px;
 	right: 20px;
 	bottom: 20px;
 	animation: showChat 0.15s var(--cubic-bezier);
