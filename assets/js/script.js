@@ -36,9 +36,13 @@ function pesquisarCEP() {
     if (validarCEP(cep)) {
         // Fazendo a requisição à API de busca de CEP
         fetch("https://viacep.com.br/ws/" + cep + "/json/")
+            //then recebe a resposta da requisição e a passa como parametro para a função
             .then(response => response.json())
+            //função preenche os campos do formulario com os dados da API
             .then(data => preencherDados(data))
-            .catch(error => {
+            //catch é uma função para quando há um erro de requisição, ele recebe o erro como parametro
+            .catch(function(error) {
+                console.error(error);
                 document.getElementById("cepNaoEncontrado").style.display = "block";
             });
     } else {
