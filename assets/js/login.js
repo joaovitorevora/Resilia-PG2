@@ -106,3 +106,22 @@ $('#forgoutPassword').click(() => {
 		},
 	});
 });
+
+function verificaForcaSenha1(){
+
+// INCLUIR SITUAÇÃO QUE OS CAMPOS ESTÃO VAZIOS
+  if ($("#password").val() == $("#password2").val()) {
+	$('#password-status').html(
+		"<span style='color:green'>Senha Ok!</span>",
+	);
+    
+  }
+  
+  else {
+	$('#password-status').html(
+		"<span style='color:red'>Senhas precisam ser iguais</span>",
+	);
+  }
+
+
+}
