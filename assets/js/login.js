@@ -51,7 +51,7 @@ class User {
 		let users = JSON.parse(localStorage.getItem('users'));
 		let user = null;
 
-		users.forEach((item) => {
+		users?.forEach((item) => {
 			item?.email == email ? (user = item) : null;
 		});
 		return user;

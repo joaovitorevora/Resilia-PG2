@@ -1,67 +1,37 @@
 const userRequestInput = $('#inputMsg');
-
-const BotResp = {
-	ERROR99: {
-		ERROR99: 'Desculpe, não compreendi sua pergunta! poderia reformular?',
-		ERROR98: 'Hmmm... não entendi, poderia reformular?',
-		ERROR97: 'Desculpe, você poderia detalhar sua pergunta um pouco melhor?',
-	},
-	ajuda: 'Eu posso te ajudar com o IPTU ou o ISS',
-	localidade:
-		'Perfeito! Antes, preciso saber qual a localiadde da filial que você deseja consultar.',
-	saudacao: () => {
-		let hourNow = new Date().getHours();
-		let saudacao = 'Olá, como posso te ajudar?';
-		if (hourNow >= 0 && hourNow < 12) {
-			saudacao = 'Bom dia, como posso te ajudar?';
-		} else if (hourNow >= 12 && hourNow < 18) {
-			saudacao = 'Boa tarde, como posso te ajudar?';
-		} else if (hourNow >= 18 && hourNow < 24) {
-			saudacao = 'Boa noite, como posso te ajudar?';
-		}
-		return saudacao;
-	},
-	iptu: {
-		reformular: 'Oque voce deseja saber sobre o IPTU?',
-		valor: 'O valor do seu IPTU no corrente ano é de R$ 100,00',
-		vencimento: 'O vencimento do IPTU é no dia 10 de cada mês',
-		pagamento: 'O pagamento do IPTU pode ser feito em dinheiro, cartão de crédito ou débito',
-		parcelamento: 'O IPTU pode ser parcelado em até 3 vezes',
-		multa: 'O IPTU tem multa de 2% ao mês de atraso',
-		juros: 'O IPTU tem juros de 1% ao mês de atraso',
-		site: 'O IPTU pode ser consultado no site da prefeitura de ',
-		ajuda:
-			'Eu posso buscar as seguintes informacoes relacionadas ao IPTU: valor, vencimento, pagamento, parcelamento, multa, juros, site.',
-		setlink: function () {
-			let newSite = this.site + 'https://www.prefeitura.com.br';
-			return newSite;
+const API = async (UserInput) => {
+	let Output = '';
+	await fetch('https://api.openai.com/v1/engines/text-davinci-002/completions', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer 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',
 		},
-	},
-
-	iss: {
-		reformular: 'Oque voce deseja saber sobre o ISS?',
-		valor: 'O valor do ISS é de R$ 100,00',
-		vencimento: 'O vencimento do ISS é no dia 10 de cada mês',
-		pagamento: 'O pagamento do ISS pode ser feito em dinheiro, cartão de crédito ou débito',
-		parcelamento: 'O ISS pode ser parcelado em até 3 vezes',
-		multa: 'O ISS tem multa de 2% ao mês de atraso',
-		juros: 'O ISS tem juros de 1% ao mês de atraso',
-		site: 'O ISS pode ser consultado no site da prefeitura ',
-		ajuda: `Eu posso buscar as seguintes informacoes relacionadas ao ISS: valor, vencimento, pagamento, parcelamento, multa, juros, site.`,
-		setlink: function () {
-			let newSite = this.site + 'https://www.prefeitura.com.br';
-			return newSite;
-		},
-	},
+		body: JSON.stringify({
+			prompt: UserInput,
+			temperature: 1,
+			max_tokens: 150,
+			top_p: 1,
+			frequency_penalty: 0,
+			presence_penalty: 0.6,
+		}),
+	})
+		.then((response) => response.json())
+		.then((data) => (Output = data.choices[0].text))
+		.catch(
+			(err) =>
+				(Output =
+					'⚠️ Com o objetivo de aprimorar a plataforma e melhorar sua experiência, estamos realizando uma manutenção programada. O nosso sistema ficará indisponível até a conclusão da manutenção. Pedimos desculpas pelo transtorno e agradecemos a compreensão.'),
+		);
+	return Output;
 };
-
-let userRequestsList = [];
 const getTimestamp = () => {
 	let hourNow = new Date().toLocaleTimeString().split(':');
 	return (hourNow = [hourNow[0], hourNow[1]].join(':'));
 };
 
-let autoScroll = () => $('.messagesList').animate({ scrollTop: $(document).height() }, 500);
+let autoScroll = () => $('.messagesList').animate({ scrollTop: 300 }, 500);
+let userRequestsList = [];
 
 $(document).ready(function () {
 	// Abre o chatbot ao clicar no botão de abrir
@@ -82,72 +52,21 @@ $(document).ready(function () {
 			e.preventDefault();
 			UserRequest();
 			$(this).prop('disabled', 'true');
-			setTimeout(() => $(this).removeAttr('disabled'), 1500);
+			setTimeout(() => {
+				$(this).removeAttr('disabled');
+				$(this).focus();
+			}, 1500);
 		}
+	});
+
+	$('#sendBtn').on('click', function () {
+		UserRequest();
 	});
 });
 
-const botResponseOutput = () => {
-	let botResponseOutput; // variável que armazena a resposta do bot
-	let userRequest = userRequestInput
-		.val()
-		.toLowerCase()
-		.trim()
-		.replace(/[!?@#]/, '')
-		.split(' '); // variável que armazena a pergunta do usuário
-	console.log('userRequest: ', userRequest);
-	let filterReq1 = userRequest.filter((request) => {
-		return (
-			request == 'iptu' ||
-			request == 'iss' ||
-			request == 'olá' ||
-			request == 'oi' ||
-			request == 'dia' ||
-			request == 'tarde' ||
-			request == 'noite'
-		);
-	});
-
-	let filterReq2 = userRequest.filter((request) => {
-		return (
-			request == 'valor' ||
-			request == 'vencimento' ||
-			request == 'pagamento' ||
-			request == 'parcelamento' ||
-			request == 'juros' ||
-			request == 'multa' ||
-			request == 'site' ||
-			request == 'ajuda'
-		);
-	});
-
-	if (
-		filterReq1 == 'dia' ||
-		filterReq1 == 'tarde' ||
-		filterReq1 == 'noite' ||
-		filterReq1 == 'olá' ||
-		filterReq1 == 'oi'
-	) {
-		botResponseOutput = BotResp.saudacao();
-	} else if (filterReq1 == 'iptu' || filterReq1 == 'iss') {
-		if (filterReq2 == 'site') {
-			botResponseOutput = BotResp[filterReq1].setlink();
-		} else {
-			botResponseOutput = BotResp[filterReq1][filterReq2] ?? BotResp[filterReq1]['reformular'];
-		}
-	} else if (filterReq1 == 'ajuda') {
-		botResponseOutput = BotResp[filterReq1];
-	} else {
-		let rdmERROR = Math.floor(Math.random() * (99 - 97 + 1) + 97);
-		botResponseOutput = BotResp['ERROR99'][`ERROR${rdmERROR}`];
-	}
-
-	return botResponseOutput; // retorna a resposta do bot
-};
-
 const BotResponse = () => {
-	let write = botResponseOutput().split('');
 	let ResID = userRequestsList.length;
+	let userReqInput = userRequestInput.val();
 
 	$('#messagesList').append(`<div class="bot d-flex mb-2">
 										<img
@@ -156,26 +75,35 @@ const BotResponse = () => {
 											style="width: 32px; height: 32px"
 											alt="bot" />
 										<div class="text-bg-secondary p-2 rounded-3 d-flex flex-column">
+										<img id=loading src="./assets/img/chatbot/loading.gif" alt="" srcset="" />
 											<span id='botRes${ResID}'></span>
 											<span class="time text-end">${getTimestamp()}</span>
 										</div>
 									</div>`);
-	write.forEach((letter, index) => {
-		setTimeout(() => {
-			$(`#botRes${ResID}`).append(letter);
+
+	API(userReqInput).then((data) => {
+		$('#loading').remove();
+		data.split('').forEach((letter, index) => {
+			$(`#messagesList` || `#botRes${ResID}`).on('click', () => clearTimeout(writeTimer));
 			autoScroll();
-		}, 50 * index);
+
+			let writeTimer = setTimeout(() => {
+				$(`#botRes${ResID}`).append(letter);
+			}, 50 * index);
+		});
 	});
 };
 
 const UserRequest = () => {
-	userRequestsList.push(userRequestInput.val());
 	let ReqID = userRequestsList.length;
+	userRequestsList.push(userRequestInput.val());
+
 	switch (userRequestInput.val() != '') {
 		case true:
 			$('#sendBtn').css('animation', 'send 1.5s 0.2s both');
 			setTimeout(() => {
 				$('#sendBtn').removeAttr('style');
+
 				$('#messagesList').append(`<div class="user d-flex mb-2 flex-row-reverse">
 									<img
 										src="./assets/img//chatbot/userIcon.png"
@@ -187,6 +115,7 @@ const UserRequest = () => {
 										<span class="time text-end">${getTimestamp()}</span>
 									</div>
 								</div>`);
+
 				setTimeout(() => {
 					BotResponse();
 					userRequestInput.val('');
@@ -202,7 +131,3 @@ const UserRequest = () => {
 	}
 	autoScroll();
 };
-
-$('#sendBtn').on('click', function () {
-	UserRequest();
-});

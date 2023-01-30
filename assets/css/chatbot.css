@@ -74,6 +74,7 @@
 }
 .messagesList {
 	height: 370px;
+	word-break: break-word;
 }
 
 .chatHeader {
