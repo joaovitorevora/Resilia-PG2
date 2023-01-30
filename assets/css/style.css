@@ -119,3 +119,9 @@ body {
 .card-body{
 	width: 100%;
 }
+/*----assinatura------*/
+
+.col{
+	background: #D9D9D9;
+	border-radius: 10px;
+}
