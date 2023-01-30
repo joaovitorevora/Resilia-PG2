@@ -26,7 +26,7 @@ cards.forEach(card => {
 
 // Lista de espera ----------
 
-document.getElementById("pesquisarCEP").addEventListener("click", pesquisarCEP);
+document.getElementById("pesquisarCEP")
 
 function pesquisarCEP() {
     // Obtendo o valor do campo de entrada de CEP
