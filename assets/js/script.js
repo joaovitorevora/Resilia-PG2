@@ -64,8 +64,9 @@ function preencherDados(data) {
     document.getElementById("estado").value = data.uf;
 }
 	// fecha modal
-document.getElementById("modal-fechar").addEventListener("click", function () {
+document.getElementById("modal-fechar")
+function fecharModal () {
     document.getElementById("cepInvalido").style.display = "none";
-});
+};
 
 
