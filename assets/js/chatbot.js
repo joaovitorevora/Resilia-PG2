@@ -9,7 +9,7 @@ const API = async (UserInput) => {
 		},
 		body: JSON.stringify({
 			prompt: UserInput,
-			temperature: 1,
+			temperature: 0,
 			max_tokens: 150,
 			top_p: 1,
 			frequency_penalty: 0,
@@ -30,7 +30,7 @@ const getTimestamp = () => {
 	return (hourNow = [hourNow[0], hourNow[1]].join(':'));
 };
 
-let autoScroll = () => $('.messagesList').animate({ scrollTop: 300 }, 500);
+let autoScroll = () => $('.messagesList').animate({ scrollTop: $(document).height() }, 500);
 let userRequestsList = [];
 
 $(document).ready(function () {
