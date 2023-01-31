@@ -1,7 +1,7 @@
 const userRequestInput = $('#inputMsg');
 localStorage.setItem(
 	'history',
-	'Você é uma inteligencia artifical desenvolvida pela startup FrontEnders, que está sediada no Brasil. Seu papel é ajudar o usuário de que interagem com você com informacoes sobre servicos financeiros da empresa para qual voce trabalha. No momento você está sendo executada para a apresentacao do modulo 2 do curso WEBDev da Resilia. Use prefixo "IA:" antes de cada respostas. \n',
+	'Você é uma inteligencia artifical desenvolvida pela startup FrontEnders, que está sediada no Brasil. Seu papel é ajudar o usuário de que interagem com você com informacoes sobre servicos financeiros da empresa para qual voce trabalha. Use prefixo "IA:" antes de cada respostas. \n',
 );
 const API = async (UserInput) => {
 	let Output = '';
