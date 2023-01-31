@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 		<title>Home - Enterprise IA</title>
+		<link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon" />
 
 		<!-- jquery -->
 		<script
@@ -27,27 +28,29 @@
 
 		<!-- main stylesheet -->
 		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="stylesheet" href="./assets/css/chatbot.css" />
 	</head>
 	<body>
 		<header>
 			<nav class="navbar navbar-dark navbar-expand-md bg-success bounce animated">
 				<div class="container-fluid justify-content-between">
 					<a class="navbar-brand d-flex align-items-center" href="#"
-						><span
-							class="bs-icon-md bs-icon-circle bs-icon-primary bg-dark d-flex justify-content-center align-items-center me-2 bs-icon"
-							><i class="bi bi-bezier"></i
-						></span>
+						><img
+							src="./assets/img/logo.png"
+							alt="logo"
+							width="64"
+							class="me-2 bg-dark rounded-circle" />
 						Enterprise IA </a
-					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
+					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navLinks">
 						<span class="visually-hidden">Abrir menu</span><span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse justify-content-between" id="navcol-3">
+					<div id="navLinks" class="collapse navbar-collapse justify-content-between" id="navcol-3">
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link active" href="./index.html">Início</a></li>
 							<li class="nav-item"><a class="nav-link" href="./assinatura.html">Assinatura</a></li>
 							<li class="nav-item"><a class="nav-link" href="./contato.html">Sobre</a></li>
 						</ul>
-						<a class="btn btn-dark" href="./login.html">Login</a>
+						<a id="btnLoginHeader" class="btn btn-dark" href="./login.html">Login</a>
 					</div>
 				</div>
 			</nav>
@@ -83,9 +86,11 @@
 
 			<!-- Second section: buttons  -->
 			<section class="container d-flex mx-auto my-4 justify-content-center flex-wrap">
-				<button class="btn btn-dark fs-5 my-2 mx-2 py-2 px-4" type="button">Live Demo</button>
+				<button id="btnLiveDemo" class="btn btn-dark fs-5 my-2 mx-2 py-2 px-4" type="button">Live Demo</button>
 				<button class="btn btn-warning fs-5 my-2 mx-2 py-2 px-4" type="button">
-					Lista de espera
+					<a href="./lista de espera.html" class="text-decoration-none text-light">
+						Lista de espera</a
+					>
 				</button>
 			</section>
 
@@ -95,7 +100,7 @@
 					<div class="col">
 						<div class="text-center d-flex flex-column align-items-center align-items-xl-center">
 							<div
-								class="bs-icon-lg bs-icon-rounded bs-icon-primary bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
+								class="rounded-3 text-light bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
 								<i class="bi bi-server"></i>
 							</div>
 							<div class="px-3">
@@ -113,7 +118,7 @@
 					<div class="col">
 						<div class="text-center d-flex flex-column align-items-center align-items-xl-center">
 							<div
-								class="bs-icon-lg bs-icon-rounded bs-icon-primary bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
+								class="rounded-3 text-light bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
 								<i class="bi bi-speedometer"></i>
 							</div>
 							<div class="px-3">
@@ -131,7 +136,7 @@
 					<div class="col">
 						<div class="text-center d-flex flex-column align-items-center align-items-xl-center">
 							<div
-								class="bs-icon-lg bs-icon-rounded bs-icon-primary bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
+								class="rounded-3 text-light bg-success d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg">
 								<i class="bi bi-shield-fill-check"></i>
 							</div>
 							<div class="px-3">
@@ -156,7 +161,7 @@
 						<div
 							class="text-center d-flex flex-column justify-content-center align-items-center py-3">
 							<div
-								class="bs-icon-xl bs-icon-circle bs-icon-primary bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
+								class="bs-icon-xl rounded-circle text-light bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
 								<i class="bi bi-star-fill"></i>
 							</div>
 							<div class="px-3">
@@ -169,7 +174,7 @@
 						<div
 							class="text-center d-flex flex-column justify-content-center align-items-center py-3">
 							<div
-								class="bs-icon-xl bs-icon-circle bs-icon-primary bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
+								class="bs-icon-xl rounded-circle text-light bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
 								<i class="bi bi-clock-fill"></i>
 							</div>
 							<div class="px-3">
@@ -182,7 +187,7 @@
 						<div
 							class="text-center d-flex flex-column justify-content-center align-items-center py-3">
 							<div
-								class="bs-icon-xl bs-icon-circle bs-icon-primary bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
+								class="bs-icon-xl rounded-circle text-light bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
 								<i class="bi bi-device-ssd-fill"></i>
 							</div>
 							<div class="px-3">
@@ -195,7 +200,7 @@
 						<div
 							class="text-center d-flex flex-column justify-content-center align-items-center py-3">
 							<div
-								class="bs-icon-xl bs-icon-circle bs-icon-primary bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
+								class="bs-icon-xl rounded-circle text-light bg-dark d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
 								<i class="bi bi-building-fill"></i>
 							</div>
 							<div class="px-3">
@@ -208,6 +213,40 @@
 			</div>
 		</main>
 
+		<!-- Five Section: ChatBot -->
+		<section>
+			<div class="container">
+				<div class="gridChatBot position-fixed shadow overflow-hidden rounded-3 text-light z-3">
+					<div class="d-flex flex-column position-relative w-100 h-100">
+						<div class="chatHeader d-flex px-2 py-2 align-items-center bg-success">
+							<h4>Chatbot - Enterprise AI</h4>
+							<span class="btnCloseChat position-absolute fs-3"><i class="bi bi-x"></i></span>
+						</div>
+						<div class="chatBody d-flex flex-column bg-light flex-grow-1 h-100">
+							<div
+								id="messagesList"
+								class="messagesList position-relative d-flex flex-column overflow-y-auto overflow-x-hidden p-2 bg-light flex-shrink-1 flex-grow-1"></div>
+							<div
+								class="position-relative w-100 flex-shrink-0 flex-grow-0 py-3 border-top bg-light">
+								<textarea
+									id="inputMsg"
+									class="inputMsg bg-light w-75 mx-3 px-1 mx-2 rounded-1 border border-secundary border-opacity-25"
+									placeholder="Qual sua demanda hoje?"></textarea>
+
+								<button id="sendBtn" class="sendBtn position-absolute fs-4 text-success">
+									<i class="bi bi-send-fill"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="openChat position-fixed z-2 fs-5 bg-success text-light rounded-circle text-center p-2 shadow">
+					<i class="bi bi-chat-dots-fill"></i>
+				</div>
+			</div>
+		</section>
+
 		<footer class="text-center py-4">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-lg-3">
@@ -217,17 +256,17 @@
 					<div class="col">
 						<ul class="list-inline my-2">
 							<li class="list-inline-item me-4">
-								<div class="bs-icon-circle bs-icon-primary bg-success bs-icon">
+								<div class="rounded-circle text-light bg-success bs-icon-sm bs-icon">
 									<i class="bi bi-linkedin"></i>
 								</div>
 							</li>
 							<li class="list-inline-item me-4">
-								<div class="bs-icon-circle bs-icon-primary bg-success bs-icon">
+								<div class="rounded-circle text-light bg-success bs-icon-sm bs-icon">
 									<i class="bi bi-twitter"></i>
 								</div>
 							</li>
 							<li class="list-inline-item">
-								<div class="bs-icon-circle bs-icon-primary bg-success bs-icon">
+								<div class="rounded-circle text-light bg-success bs-icon-sm bs-icon">
 									<i class="bi bi-github"></i>
 								</div>
 							</li>
@@ -254,5 +293,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 		<!-- main js -->
 		<script src="./assets/js/script.js"></script>
+		<script src="./assets/js/chatbot.js"></script>
+		<script src="./assets/js/login.js"></script>
 	</body>
 </html>

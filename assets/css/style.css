@@ -8,15 +8,18 @@
 	display: none;
 }
 body {
-	background-image: url(../img/BG\ MAIN.png);
-	font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: url(../img/BG\ MAIN.png) no-repeat fixed center;
 	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
+	font-family: 'Roboto', sans-serif;
+}
+main {
+	backdrop-filter: blur(4px);
 }
 /* ======Header======= */
-
 .nav-link {
 	color: rgba(255, 255, 255, 0.512);
 	border-radius: 5px;
@@ -27,7 +30,6 @@ body {
 	color: rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0);
 }
-
 .active {
 	width: fit-content;
 	padding: 5px;
@@ -38,10 +40,13 @@ body {
 	border: solid 1px #198754;
 	text-transform: uppercase;
 }
+#loggedArea {
+	line-height: 0;
+}
 
 /* ======Index======= */
 .bs-icon {
-	--bs-icon-size: 0.75rem;
+	--bs-icon-size: 2rem;
 	display: flex;
 	flex-shrink: 0;
 	justify-content: center;
@@ -49,53 +54,77 @@ body {
 	font-size: var(--bs-icon-size);
 	width: calc(var(--bs-icon-size) * 2);
 	height: calc(var(--bs-icon-size) * 2);
-	color: var(--bs-primary);
-}
-.bs-icon-xs {
-	--bs-icon-size: 1rem;
-	width: calc(var(--bs-icon-size) * 1.5);
-	height: calc(var(--bs-icon-size) * 1.5);
 }
 .bs-icon-sm {
 	--bs-icon-size: 1rem;
 }
-.bs-icon-md {
-	--bs-icon-size: 1.5rem;
-}
-.bs-icon-lg {
-	--bs-icon-size: 2rem;
-}
-.bs-icon-xl {
-	--bs-icon-size: 2.5rem;
-}
-.bs-icon.bs-icon-primary {
-	color: var(--bs-white);
-	background: var(--bs-primary);
-}
-.bs-icon.bs-icon-primary-light {
-	color: var(--bs-primary);
-	background: rgba(var(--bs-primary-rgb), 0.2);
-}
-.bs-icon.bs-icon-semi-white {
-	color: var(--bs-primary);
-	background: rgba(255, 255, 255, 0.5);
-}
-.bs-icon.bs-icon-rounded {
-	border-radius: 0.5rem;
-}
-.bs-icon.bs-icon-circle {
-	border-radius: 50%;
-}
 
 /* ====== Contato ====== */
-.card-group {
-	margin: 10%;
+
+.card {
+	margin: 20px;
+	margin-top: 5%;
+	height: 330px;
+	width: 230px;
+	transform-style: preserve-3d;
+	transition: all 0.5s;
+	background-color: lightgray;
 }
+
 .card-img-top:hover {
 	transform: scale(1.05);
 	transition: 0.2s all;
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.495);
 }
+.textCard {
+	font-size: 12px;
+}
+.linksContato {
+	text-decoration: none;
+	color: inherit;
+}
+
 .card-body {
-	border: solid 1px black;
+	width: 100%;
+}
+.face {
+	position: absolute;
+}
+
+#front {
+	transform-style: preserve-3d;
+	transform: rotateY(180deg);
+}
+#back {
+	background-color: lightgray;
+	transform: rotateY(0deg);
+	transform-style: preserve-3d !important;
+	backface-visibility: hidden;
+}
+.flip {
+	transform: rotateY(180deg);
+}
+
+.btn-primary{
+	background-color: #29754D;
+}
+.btn-primary:hover{
+	background-color: #004c24;
+}
+
+/* ====== Assinatura ====== */
+.plan {
+	min-width: 250px;
+}
+#cont{
+	background-color: #d9d9d9;
+	border-radius: 10px;
+}
+#cont2{
+	background-color: #d9d9d9;
+	border-radius: 10px;
+}
+#cont3{
+	background-color: #d9d9d9;
+	border-radius: 10px;
 }

@@ -1,0 +1,111 @@
+:root {
+	--cubic-bezier: cubic-bezier(0.25, 0.25, 0.5, 1.1);
+}
+
+@keyframes moveIn {
+	0% {
+		opacity: 0;
+
+		transform: translateX(10px);
+	}
+	to {
+		opacity: 1;
+
+		transform: translateX(0);
+	}
+}
+
+@keyframes send {
+	20% {
+		transform: translate3d(0, -10px, 0) rotate(-45deg);
+	}
+
+	30%,
+	45% {
+		opacity: 1;
+		transform: translate3d(0, 20px, 0) rotate(-45deg);
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(0, -100px, 0) rotate(-45deg);
+	}
+}
+
+@keyframes showChat {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+::placeholder {
+	text-align: center;
+	padding: 10px 0;
+}
+.btnCloseChat,
+.openChat {
+	cursor: pointer;
+	right: 12px;
+}
+.openChat {
+	width: 45px;
+	height: 45px;
+	bottom: 20px;
+}
+.openChat:hover {
+	transform: scale(1.1);
+	transition: 0.2s all;
+}
+
+.gridChatBot {
+	display: none;
+	height: 500px;
+	max-width: 300px;
+	min-width: 300px;
+	right: 20px;
+	bottom: 20px;
+	animation: showChat 0.15s var(--cubic-bezier);
+	animation-fill-mode: forwards;
+}
+.messagesList {
+	height: 370px;
+	word-break: break-word;
+}
+
+.chatHeader {
+	height: 40px;
+}
+
+.chatHeader h4 {
+	opacity: 0;
+	animation: moveIn 0.15s 0.3s;
+	animation-fill-mode: forwards;
+	margin: 0;
+	font-size: 16px;
+	line-height: 18px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.inputMsg,
+.sendBtn {
+	resize: none;
+	outline: none;
+}
+.time {
+	color: #ffffffb3;
+	font-size: 8pt;
+}
+
+.sendBtn {
+	background-color: transparent;
+	bottom: 30px;
+	border: none;
+	transform: rotate(45deg);
+	transition: all 0.5s ease-in-out;
+}
