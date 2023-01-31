@@ -54,26 +54,26 @@
                     <!-- linha 1-->
                         <div class="linha w-100 d-flex align-items-center"> 
                             <div class="instrucaop w-50 ">
-                                <input id="Nome" name="Nome" placeholder="Nome*" class="form-control input-md bg-transparent" required="" type="text">
+                                <input id="Nome" name="Nome" placeholder="Nome*" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text">
                             </div>                                                            
                             <div class="instrucaop w-50">
-                                <input id="prependedtext" name="prependedtext" class="form-control input-md bg-transparent" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                                <input id="prependedtext" name="prependedtext" class="form-control input-md bg-transparent border-bottom border-success" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
                             </div>                                                      
                         </div>
                     <!-- linha 2-->
                         <div class="linha w-100 d-flex align-items-center">   
-                            <div class="instrucaop w-50 bg-transparent border-bottom border-success"> 
-                                <input id="rg" name="rg" placeholder="RG- Apenas números*" class="form-control input-md bg-transparent border-0 border-success" required="" type="text" maxlength="11" pattern="[0-9]+$">
+                            <div class="instrucaop w-50 bg-transparent"> 
+                                <input id="rg" name="rg" placeholder="RG- Apenas números*" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text" maxlength="11" pattern="[0-9]+$">
                             </div>
                             <div class="instrucaop w-50">                                  
-                                <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md bg-transparent" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                                <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
                             </div>
                         </div>
                     <!-- linha 3-->
                     <div class="linha w-100 d-flex align-items-center"> 
                         <div class="instrucaop w-50">
                             <input type="password" 
-                            class="form-control bg-transparent border-0 border-bottom border-success" 
+                            class="form-control input-md bg-transparent border-bottom border-dark" 
                             id="password" 
                             minlength="6" 
                             maxlength="12" 
@@ -82,7 +82,7 @@
                         </div>
                         <div class="instrucaop w-50">
                             <input type="password" 
-                            class="form-control bg-transparent border-0 border-bottom border-success" 
+                            class="form-control input-md bg-transparent border-bottom border-dark" 
                             id="password2" 
                             minlength="6"
                             maxlength="12" 
@@ -96,7 +96,7 @@
                     <!-- linha 4-->
                         <div class="linha w-100 d-flex align-items-center">
                             <div class="instrucaop w-75">
-                                <input id="cep" name="cep" placeholder="CEP- Apenas números" class="form-control input-md bg-transparent" required="" value="" maxlength="9" type="search"pattern="[0-9]+$" onkeypress="$(this).mask('00000-000');">
+                                <input id="cep" name="cep" placeholder="CEP- Apenas números" class="form-control input-md bg-transparent border-bottom border-dark" required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
                             </div>
                         <div class="instrucaop w-25">
                             <button type="button" class="btn btn-primary " id="pesquisarCEP" onclick="pesquisarCEP()">Pesquisar</button>
@@ -105,19 +105,19 @@
                     <!-- linha 5-->
                     <div class="linha w-100 d-flex align-items-center">
                         <div class="instrucaop w-50">
-                            <input id="rua" name="rua" class="form-control input-md bg-transparent" placeholder="Rua" required="" readonly="readonly" type="text">
+                            <input id="rua" name="rua" class="form-control input-md bg-transparent border-bottom border-dark" placeholder="Rua" required="" readonly="readonly" type="text">
                         </div>                          
                         <div class="instrucaop w-50">
-                            <input id="numero" name="numero" class="form-control input-md bg-transparent" placeholder="Numero" required=""  type="text">
+                            <input id="numero" name="numero" class="form-control input-md bg-transparent border-bottom border-dark" placeholder="Numero" required=""  type="text">
                         </div>                          
                     </div>
                     <!-- linha 6-->
                     <div class="linha w-100 d-flex align-items-center">
                         <div class="instrucaop w-50">
-                            <input id="cidade" placeholder="Cidade" name="cidade" class="form-control input-md bg-transparent" placeholder="" required=""  readonly="readonly" type="text">
+                            <input id="cidade" placeholder="Cidade" name="cidade" class="form-control input-md bg-transparent border-bottom border-dark" placeholder="" required=""  readonly="readonly" type="text">
                         </div>
                         <div class="instrucaop w-50 ">
-                            <input id="estado" name="estado" placeholder="Estado" class="form-control input-md bg-transparent border-0 border-success" placeholder="" required=""  readonly="readonly" type="text">
+                            <input id="estado" name="estado" placeholder="Estado" class="form-control input-md bg-transparent border-bottom border-dark" placeholder="" required=""  readonly="readonly" type="text">
                         </div>
                     </div>
                     <div class="instrucaop w-25">
