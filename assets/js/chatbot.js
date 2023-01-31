@@ -1,7 +1,11 @@
 const userRequestInput = $('#inputMsg');
+localStorage.setItem(
+	'history',
+	'Você é uma inteligencia artifical desenvolvida pela startup FrontEnders, que está sediada no Brasil. Seu papel é ajudar o usuário de que interagem com você com informacoes sobre servicos financeiros da empresa para qual voce trabalha. No momento você está sendo executada para a apresentacao do modulo 2 do curso WEBDev da Resilia. Use prefixo "IA:" antes de cada respostas. \n',
+);
 const API = async (UserInput) => {
 	let Output = '';
-	await fetch('https://api.openai.com/v1/engines/text-davinci-002/completions', {
+	await fetch('https://api.openai.com/v1/engines/text-davinci-001/completions', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -9,11 +13,18 @@ const API = async (UserInput) => {
 		},
 		body: JSON.stringify({
 			prompt: UserInput,
+			// temperature: 0,
+			// max_tokens: 60,
+			// top_p: 1,
+			// frequency_penalty: 0.5,
+			// presence_penalty: 0.1,
+
 			temperature: 0,
 			max_tokens: 150,
 			top_p: 1,
-			frequency_penalty: 0,
-			presence_penalty: 0.6,
+			frequency_penalty: 0.5,
+			presence_penalty: 0.9,
+			stop: [' H:', ' IA:'],
 		}),
 	})
 		.then((response) => response.json())
@@ -25,6 +36,7 @@ const API = async (UserInput) => {
 		);
 	return Output;
 };
+
 const getTimestamp = () => {
 	let hourNow = new Date().toLocaleTimeString().split(':');
 	return (hourNow = [hourNow[0], hourNow[1]].join(':'));
@@ -38,6 +50,11 @@ $(document).ready(function () {
 	$('.openChat').click(function () {
 		$('.gridChatBot').toggle();
 		$(this).hide(300);
+	});
+
+	$('#btnLiveDemo').click(function () {
+		$('.gridChatBot').toggle();
+		$('.openChat').hide(300);
 	});
 
 	// Fecha o chatbot ao clicar no botão de fechar
@@ -55,6 +72,9 @@ $(document).ready(function () {
 			setTimeout(() => {
 				$(this).removeAttr('disabled');
 				$(this).focus();
+				$(this).on('focus', () => {
+					autoScroll();
+				});
 			}, 1500);
 		}
 	});
@@ -66,7 +86,12 @@ $(document).ready(function () {
 
 const BotResponse = () => {
 	let ResID = userRequestsList.length;
-	let userReqInput = userRequestInput.val();
+	let prefixHuman = '\nH: ';
+	let history = localStorage.getItem('history');
+	let userReqInput = `${userRequestInput.val()}`;
+	userReqInput.split(' ').length < 2 && userReqInput == 'Oi' || userReqInput == 'oi' || userReqInput == 'Ola' || userReqInput == 'ola' || userReqInput == 'Olá' || userReqInput == 'olá'
+		? (userReqInput = 'Retorne com uma saudação')
+		: userReqInput;
 
 	$('#messagesList').append(`<div class="bot d-flex mb-2">
 										<img
@@ -81,17 +106,24 @@ const BotResponse = () => {
 										</div>
 									</div>`);
 
-	API(userReqInput).then((data) => {
+	localStorage.setItem('history', (history += prefixHuman + userReqInput));
+
+	API(history).then((data) => {
+		localStorage.setItem('history', (history += data + '\n'));
+		// history += data;
 		$('#loading').remove();
 		data.split('').forEach((letter, index) => {
 			$(`#messagesList` || `#botRes${ResID}`).on('click', () => clearTimeout(writeTimer));
-			autoScroll();
 
 			let writeTimer = setTimeout(() => {
 				$(`#botRes${ResID}`).append(letter);
 			}, 50 * index);
 		});
 	});
+
+	setTimeout(() => {
+		autoScroll();
+	}, 2000);
 };
 
 const UserRequest = () => {
@@ -118,6 +150,7 @@ const UserRequest = () => {
 
 				setTimeout(() => {
 					BotResponse();
+					autoScroll();
 					userRequestInput.val('');
 				}, 500);
 			}, 1500);
