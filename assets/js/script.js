@@ -46,7 +46,12 @@ function pesquisarCEP() {
                 document.getElementById("cepNaoEncontrado").style.display = "block";
             });
     } else {
-        document.getElementById("cepInvalido").style.display = "block";
+        swal.fire({
+        title: 'CEP inválido',
+        icon: 'error',
+        text: 'teste',
+        showConfirmButton: false,
+        timer: 2000,});
     }
 }
 
