@@ -96,8 +96,8 @@
                     <!-- linha 4-->
                         <div class="linha w-100 d-flex align-items-center">
                             <div class="instrucaop w-75">
-                                <input id="cep" name="cep" placeholder="CEP- Apenas números" class="form-control input-md bg-transparent border-bottom border-dark" required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
-                            </div>
+                                <input id="cep" name="cep" placeholder="CEP- Apenas números" class="form-control input-md bg-transparent border-bottom border-dark" required="" value="" maxlength="9" type="search"pattern="[0-9]+$" onkeypress="$(this).mask('00000-000');">
+                            </div>  
                         <div class="instrucaop w-25">
                             <button type="button" class="btn btn-primary " id="pesquisarCEP" onclick="pesquisarCEP()">Pesquisar</button>
                         </div>

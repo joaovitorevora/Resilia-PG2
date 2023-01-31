@@ -72,12 +72,6 @@ function formatarCEP(input) {
 }
 
 
-function validarCEP(cep) {
-    // validar o CEP
-    // var validacep = /^[0-9]{8}$/;
-
-    return validacep = true
-}
 
 function preencherDados(data) {
     // Preenchendo os campos com os dados retornados pela API
