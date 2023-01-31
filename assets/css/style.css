@@ -105,6 +105,13 @@ main {
 	transform: rotateY(180deg);
 }
 
+.btn-primary{
+	background-color: #29754D;
+}
+.btn-primary:hover{
+	background-color: #004c24;
+}
+
 /* ====== Assinatura ====== */
 .plan {
 	min-width: 250px;

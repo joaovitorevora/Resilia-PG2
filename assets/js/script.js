@@ -47,8 +47,15 @@ function pesquisarCEP() {
                     icon: 'error',
                     text: 'Digite um CEP válido',
                     showConfirmButton: false,
-                    timer: 2000,}):
-                preencherDados(data);
+                    timer: 2000,})
+                    .then(function () {
+                        document.getElementById("rua").value = "";
+                        document.getElementById("numero").value = "";
+                        document.getElementById("cidade").value = "";
+                        document.getElementById("estado").value = "";
+                        document.getElementById("cep").value = "";
+                        }):
+                    preencherDados(data);
               })
               //catch é uma função para quando há um erro de requisição, ele recebe o erro como parametro
             
@@ -58,7 +65,14 @@ function pesquisarCEP() {
         icon: 'error',
         text: 'Digite um CEP válido',
         showConfirmButton: false,
-        timer: 2000,});
+        timer: 2000,})
+        .then(function () {
+            document.getElementById("rua").value = "";
+            document.getElementById("numero").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("estado").value = "";
+            document.getElementById("cep").value = "";
+            });
     }
 }
 function formatarCEP(input) {
