@@ -26,16 +26,16 @@
 							width="64"
 							class="me-2 bg-dark rounded-circle" />
 						Enterprise IA </a
-					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
+					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navLinks">
 						<span class="visually-hidden">Abrir menu</span><span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse justify-content-between" id="navcol-3">
+					<div id="navLinks" class="collapse navbar-collapse justify-content-between" >
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="./index.html">Início</a></li>
 							<li class="nav-item"><a class="nav-link" href="./assinatura.html">Assinatura</a></li>
 							<li class="nav-item"><a class="nav-link" href="./contato.html">Sobre</a></li>
 						</ul>
-						<a class="btn btn-dark" href="./login.html">Login</a>
+						<a id="btnLoginHeader" class="btn btn-dark" href="./login.html">Login</a>
 					</div>
 				</div>
 			</nav>
@@ -54,10 +54,10 @@
                     <!-- linha 1-->
                         <div class="linha w-100 d-flex align-items-center"> 
                             <div class="instrucaop w-50 ">
-                                <input id="Nome" name="Nome" placeholder="Nome*" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text">
+                                <input id="nome" name="Nome" placeholder="Nome*" class="form-control input-md bg-transparent" required="" type="text">
                             </div>                                                            
                             <div class="instrucaop w-50">
-                                <input id="prependedtext" name="prependedtext" class="form-control input-md bg-transparent border-bottom border-success" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                                <input id="email" name="prependedtext" class="form-control input-md bg-transparent" placeholder="email@email.com" required="" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
                             </div>                                                      
                         </div>
                     <!-- linha 2-->
@@ -66,7 +66,7 @@
                                 <input id="rg" name="rg" placeholder="RG- Apenas números*" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text" maxlength="11" pattern="[0-9]+$">
                             </div>
                             <div class="instrucaop w-50">                                  
-                                <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md bg-transparent border-bottom border-success" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                                <input id="dtnasc" name="dtnasc" placeholder="Data de nascimento" class="form-control input-md bg-transparent" required="" type="date" maxlength="10" >
                             </div>
                         </div>
                     <!-- linha 3-->
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="instrucaop w-25">
-                        <button type="button" class="btn btn-primary" id="enviarlist">Enviar</button>
+                        <button type="button" id="btnRegister" class="btn btn-primary" id="enviarlist">Enviar</button>
                     </div>                
                 </form>        
             </div>

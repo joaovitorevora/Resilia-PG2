@@ -1,5 +1,33 @@
-function verificaForcaSenha()
-{
+$(document).ready(function () {
+	let signedUser = localStorage.getItem('loggedUser');
+	if (localStorage.getItem('loggedUser') !== null) {
+		let user = getUser(signedUser);
+
+		$('#btnLoginHeader').hide();
+		$('#navLinks')
+			.append(`<div id="loggedArea" class="text-light d-flex align-items-center bg-dark p-3 rounded-3">
+							<div>
+								<p class=" fw-bold">${user?.name}</p>
+								<span class="text-lowercase">${user?.email}</span>
+							</div>
+							<a id=btnLogoff href="javascript:void(0)" class="logoff ms-3  badge text-dark bg-warning"
+								><i class="bi bi-box-arrow-right"></i
+							></a>
+						</div>`);
+	} else {
+		localStorage.removeItem('loggedUser');
+		$('#btnLoginHeader').show();
+		$('#loggedArea').remove();
+	}
+
+	$('#btnLogoff').on('click', () => {
+		localStorage.removeItem('loggedUser');
+
+		window.location.href = 'login.html';
+	});
+});
+
+function verificaForcaSenha() {
 	const numeros = /([0-9])/;
 	const alfabetoa = /([a-z])/;
 	const alfabetoA = /([A-Z])/;
@@ -26,19 +54,27 @@ function verificaForcaSenha()
 //===== Intruções =====
 const getUser = (email) => User.getUser(email); // Retorna o usuário caso exista
 const listUsers = () => User?.listUsers(); // Lista todos os usuários cadastrados
-const register = (name, email, password) => User.register(name, email, password); // Cadastra um novo usuário
+const registerUser = (name, email, password, rg, nascimento, cep, rua, numero, cidade, estado) =>
+	User.register(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado); // Cadastra um novo usuário
 
 // Classe para manipular usuários
 class User {
-	constructor(name, email, password) {
+	constructor(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado) {
 		this.name = name;
 		this.email = email.toLowerCase();
 		this.password = btoa(password);
+		this.rg = rg;
+		this.nascimento = nascimento;
+		this.cep = cep;
+		this.rua = rua;
+		this.numero = numero;
+		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	// Função para cadastrar usuário no LocalStorage
-	static register(name, email, password) {
-		const user = new User(name, email, password);
+	static register(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado) {
+		const user = new User(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado);
 
 		let users = JSON.parse(localStorage.getItem('users')) || [];
 		users.push(user);
@@ -62,7 +98,9 @@ class User {
 		const users = JSON.parse(localStorage.getItem('users'));
 
 		users?.forEach((user) => {
-			console.log(`Nome: ${user.name} - Email: ${user.email}`);
+			console.log(
+				`Nome: ${user.name} - Email: ${user.email} - RG: ${user.rg} - Nascimento: ${user.nascimento} - CEP: ${user.cep} - Rua: ${user.rua} - Numero: ${user.numero} - Cidade: ${user.cidade} - Estado: ${user.estado}`,
+			);
 		});
 	}
 }
@@ -107,21 +145,128 @@ $('#forgoutPassword').click(() => {
 	});
 });
 
-function verificaForcaSenha1(){
-
-// INCLUIR SITUAÇÃO QUE OS CAMPOS ESTÃO VAZIOS
-  if ($("#password").val() == $("#password2").val()) {
-	$('#password-status').html(
-		"<span style='color:green'>Senha Ok!</span>",
-	);
-    
-  }
-  
-  else {
-	$('#password-status').html(
-		"<span style='color:red'>Senhas precisam ser iguais</span>",
-	);
-  }
-
-
+function verificaForcaSenha1() {
+	// INCLUIR SITUAÇÃO QUE OS CAMPOS ESTÃO VAZIOS
+	if ($('#password').val() == $('#password2').val()) {
+		$('#password-status').html("<span style='color:green'>Senha Ok!</span>");
+	} else {
+		$('#password-status').html("<span style='color:red'>Senhas precisam ser iguais</span>");
+	}
 }
+
+$('#btnRegister').click(() => {
+	const name = $('#nome').val();
+	const email = $('#email').val();
+	const rg = $('#rg').val();
+	const nascimento = $('#dtnasc').val();
+	const password = $('#password').val();
+	const cep = $('#cep').val();
+	const rua = $('#rua').val();
+	const numero = $('#numero').val();
+	const cidade = $('#cidade').val();
+	const estado = $('#estado').val();
+
+	if (
+		name == '' ||
+		email == '' ||
+		rg == '' ||
+		nascimento == '' ||
+		password == '' ||
+		cep == '' ||
+		rua == '' ||
+		numero == '' ||
+		cidade == '' ||
+		estado == ''
+	) {
+		swal.fire({
+			title: 'Atenção!',
+			icon: 'warning',
+			text: 'Preencha todos os campos!',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+	} else {
+		if (User.getUser(email) == null) {
+			User.register(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado);
+			swal.fire({
+				title: 'Cadastro realizado com sucesso!',
+				icon: 'success',
+				text: 'Aguarde...',
+				showConfirmButton: false,
+				timer: 1500,
+			});
+
+			setTimeout(() => {
+				window.location.href = 'index.html';
+			}, 1500);
+		} else {
+			swal.fire({
+				title: 'Atenção!',
+				icon: 'warning',
+				text: 'E-mail já cadastrado!',
+				showConfirmButton: false,
+				timer: 1500,
+			});
+		}
+	}
+});
+
+$('#btnLogin').click((e) => {
+	e.preventDefault();
+	const email = $('#inputEmail').val();
+	const password = $('#password').val();
+
+	if (email == '' || password == '') {
+		swal.fire({
+			title: 'Atenção!',
+			icon: 'warning',
+			text: 'Preencha todos os campos!',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+	} else {
+		let user = User.getUser(email);
+		if (user != null) {
+			if (user.password == btoa(password)) {
+				localStorage.setItem('loggedUser', user.email);
+				$('#btnLoginHeader').hide();
+				$('#navLinks')
+					.append(`<div id="loggedArea" class="text-light d-flex align-items-center bg-dark p-3 rounded-3">
+							<div>
+								<p class=" fw-bold">${user.name}</p>
+								<span class="text-lowercase">${user.email}</span>
+							</div>
+							<a href="" class="logoff ms-3  badge text-dark bg-warning"
+								><i class="bi bi-box-arrow-right"></i
+							></a>
+						</div>`);
+				swal.fire({
+					title: 'Login realizado com sucesso!',
+					icon: 'success',
+					text: 'Aguarde...',
+					showConfirmButton: false,
+					timer: 1500,
+				});
+				setTimeout(() => {
+					window.location.href = 'index.html';
+				}, 1500);
+			} else {
+				swal.fire({
+					title: 'Atenção!',
+					icon: 'warning',
+					text: 'Senha incorreta!',
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			}
+		} else {
+			swal.fire({
+				title: 'Atenção!',
+				icon: 'warning',
+				text: 'E-mail não cadastrado!',
+				showConfirmButton: false,
+				timer: 1500,
+			});
+		}
+	}
+});

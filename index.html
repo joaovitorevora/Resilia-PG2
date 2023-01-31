@@ -41,16 +41,16 @@
 							width="64"
 							class="me-2 bg-dark rounded-circle" />
 						Enterprise IA </a
-					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
+					><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navLinks">
 						<span class="visually-hidden">Abrir menu</span><span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse justify-content-between" id="navcol-3">
+					<div id="navLinks" class="collapse navbar-collapse justify-content-between" id="navcol-3">
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link active" href="./index.html">Início</a></li>
 							<li class="nav-item"><a class="nav-link" href="./assinatura.html">Assinatura</a></li>
 							<li class="nav-item"><a class="nav-link" href="./contato.html">Sobre</a></li>
 						</ul>
-						<a class="btn btn-dark" href="./login.html">Login</a>
+						<a id="btnLoginHeader" class="btn btn-dark" href="./login.html">Login</a>
 					</div>
 				</div>
 			</nav>
@@ -87,8 +87,10 @@
 			<!-- Second section: buttons  -->
 			<section class="container d-flex mx-auto my-4 justify-content-center flex-wrap">
 				<button class="btn btn-dark fs-5 my-2 mx-2 py-2 px-4" type="button">Live Demo</button>
-				<button class="btn btn-warning fs-5 my-2 mx-2 py-2 px-4" type="button"><a href="./lista de espera.html" class="text-decoration-none text-light">
-					Lista de espera</a>
+				<button class="btn btn-warning fs-5 my-2 mx-2 py-2 px-4" type="button">
+					<a href="./lista de espera.html" class="text-decoration-none text-light">
+						Lista de espera</a
+					>
 				</button>
 			</section>
 
@@ -292,5 +294,6 @@
 		<!-- main js -->
 		<script src="./assets/js/script.js"></script>
 		<script src="./assets/js/chatbot.js"></script>
+		<script src="./assets/js/login.js"></script>
 	</body>
 </html>

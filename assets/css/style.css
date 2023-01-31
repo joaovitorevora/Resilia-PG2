@@ -9,14 +9,14 @@
 }
 body {
 	min-height: 100vh;
-	display: flex ;
+	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	background: url(../img/BG\ MAIN.png) no-repeat fixed center;
 	background-size: cover;
 	font-family: 'Roboto', sans-serif;
 }
-main{
+main {
 	backdrop-filter: blur(4px);
 }
 /* ======Header======= */
@@ -40,6 +40,9 @@ main{
 	border: solid 1px #198754;
 	text-transform: uppercase;
 }
+#loggedArea {
+	line-height: 0;
+}
 
 /* ======Index======= */
 .bs-icon {
@@ -51,7 +54,6 @@ main{
 	font-size: var(--bs-icon-size);
 	width: calc(var(--bs-icon-size) * 2);
 	height: calc(var(--bs-icon-size) * 2);
-	
 }
 .bs-icon-sm {
 	--bs-icon-size: 1rem;
@@ -103,13 +105,7 @@ main{
 	transform: rotateY(180deg);
 }
 
-
 /* ====== Assinatura ====== */
-.plan{
-	min-width: 250px
-}/*----assinatura------*/
-
-.col{
-	background: #D9D9D9;
-	border-radius: 10px;
+.plan {
+	min-width: 250px;
 }
