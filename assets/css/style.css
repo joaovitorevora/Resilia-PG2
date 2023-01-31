@@ -83,7 +83,10 @@ main {
 	text-decoration: none;
 	color: inherit;
 }
-
+.imgSize{
+	width: 230px;
+	height: 152px;
+}
 .card-body {
 	width: 100%;
 }
