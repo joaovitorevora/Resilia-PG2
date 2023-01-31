@@ -89,7 +89,16 @@ const BotResponse = () => {
 	let prefixHuman = '\nH: ';
 	let history = localStorage.getItem('history');
 	let userReqInput = `${userRequestInput.val()}`;
-	userReqInput.split(' ').length < 2 && userReqInput == 'Oi' || userReqInput == 'oi' || userReqInput == 'Ola' || userReqInput == 'ola' || userReqInput == 'Olá' || userReqInput == 'olá'
+	(userReqInput.split(' ').length < 2 && userReqInput == 'Oi') ||
+	userReqInput == 'oi' ||
+	userReqInput == 'Ola' ||
+	userReqInput == 'ola' ||
+	userReqInput == 'Olá' ||
+	userReqInput == 'olá' ||
+	userReqInput == 'obrigado' ||
+	userReqInput == 'Obrigado' ||
+	userReqInput == 'obrigada' ||
+	userReqInput == 'Obrigada'
 		? (userReqInput = 'Retorne com uma saudação')
 		: userReqInput;
 
