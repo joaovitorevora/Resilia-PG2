@@ -1,3 +1,4 @@
+const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
 $(document).ready(function () {
 	let signedUser = localStorage.getItem('loggedUser');
 	if (localStorage.getItem('loggedUser') !== null) {
@@ -50,7 +51,10 @@ function verificaForcaSenha() {
 		}
 	}
 }
-
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+  }
 //===== Intruções =====
 const getUser = (email) => User.getUser(email); // Retorna o usuário caso exista
 const listUsers = () => User?.listUsers(); // Lista todos os usuários cadastrados
