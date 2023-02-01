@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 const checkInput = () => {
 	let userReqInput = `${userRequestInput.val()}`;
-	(userReqInput.split(' ').length < 2 && userReqInput == 'Oi') ||
+	(userReqInput.trim().split(' ').length < 2 && userReqInput == 'Oi') ||
 	userReqInput == 'oi' ||
 	userReqInput == 'OI' ||
 	userReqInput == 'Oi' ||
