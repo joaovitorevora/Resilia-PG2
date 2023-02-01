@@ -77,13 +77,19 @@ main {
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.495);
 }
 .textCard {
-	font-size: 12px;
+	font-size: 10px;
 }
 .linksContato {
 	text-decoration: none;
-	color: inherit;
+	color: var(--bs-success);
 }
-
+.linksContato:hover {
+	font-weight: bold;
+}
+.imgSize{
+	width: 230px;
+	height: 152px;
+}
 .card-body {
 	width: 100%;
 }
