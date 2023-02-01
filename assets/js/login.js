@@ -185,7 +185,17 @@ $('#btnRegister').click(() => {
 			showConfirmButton: false,
 			timer: 1500,
 		});
-	} else {
+	} else if($('#password').val() != $('#password2').val()) {
+		swal.fire({
+			title: 'Atenção!',
+			icon: 'warning',
+			text: 'Confirme se as senhas estão iguais!',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		
+	}
+	else {
 		if (User.getUser(email) == null) {
 			User.register(name, email, password, rg, nascimento, cep, rua, numero, cidade, estado);
 			swal.fire({
@@ -270,3 +280,15 @@ $('#btnLogin').click((e) => {
 		}
 	}
 });
+// validando para nome ficar apenas como text
+const input = document.getElementById("nome");
+input.addEventListener("input", function () {
+  const value = input.value;
+  const regex = /^[a-zA-Z]+$/;
+  if (!regex.test(value)) {
+    input.value = value.slice(0, -1);
+  }
+});
+
+
+
