@@ -81,7 +81,10 @@ main {
 }
 .linksContato {
 	text-decoration: none;
-	color: inherit;
+	color: var(--bs-success);
+}
+.linksContato:hover {
+	font-weight: bold;
 }
 .imgSize{
 	width: 230px;
