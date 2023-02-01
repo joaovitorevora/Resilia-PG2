@@ -51,10 +51,7 @@ function verificaForcaSenha() {
 		}
 	}
 }
-function validateEmail(email) {
-	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	return re.test(email);
-  }
+
 //===== Intruções =====
 const getUser = (email) => User.getUser(email); // Retorna o usuário caso exista
 const listUsers = () => User?.listUsers(); // Lista todos os usuários cadastrados
@@ -172,7 +169,8 @@ $('#btnRegister').click(() => {
 
 	if (
 		name == '' ||
-		email == '' ||
+		email == '' || 
+		regexEmail.test == false ||
 		rg == '' ||
 		nascimento == '' ||
 		password == '' ||
