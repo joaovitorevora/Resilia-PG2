@@ -1,8 +1,11 @@
 const userRequestInput = $('#inputMsg');
+const autoScroll = () => $('.messagesList').animate({ scrollTop: $(document).height() }, 500);
+let userRequestsList = [];
 localStorage.setItem(
 	'history',
-	'Você é uma inteligencia artifical desenvolvida pela startup FrontEnders, que está sediada no Brasil. Seu papel é ajudar o usuário de que interagem com você com informacoes sobre servicos financeiros da empresa para qual voce trabalha. Use prefixo "IA:" antes de cada respostas. \n',
+	'Assuma um papel de inteligencia artifical criada em  26 de Janeiro de 2022 pela startup brasileira FrontEnders. Seu papel é ajudar o usuário de que interagem com você com informacoes sobre servicos financeiros da empresa para qual você trabalha. Use prefixo "IA:" antes de cada respostas. \n',
 );
+
 const API = async (UserInput) => {
 	let Output = '';
 	await fetch('https://api.openai.com/v1/engines/text-davinci-001/completions', {
@@ -13,17 +16,11 @@ const API = async (UserInput) => {
 		},
 		body: JSON.stringify({
 			prompt: UserInput,
-			// temperature: 0,
-			// max_tokens: 60,
-			// top_p: 1,
-			// frequency_penalty: 0.5,
-			// presence_penalty: 0.1,
-
 			temperature: 0,
 			max_tokens: 150,
 			top_p: 1,
-			frequency_penalty: 0.5,
-			presence_penalty: 0.9,
+			frequency_penalty: 0,
+			presence_penalty: 0,
 			stop: [' H:', ' IA:'],
 		}),
 	})
@@ -41,9 +38,6 @@ const getTimestamp = () => {
 	let hourNow = new Date().toLocaleTimeString().split(':');
 	return (hourNow = [hourNow[0], hourNow[1]].join(':'));
 };
-
-let autoScroll = () => $('.messagesList').animate({ scrollTop: $(document).height() }, 500);
-let userRequestsList = [];
 
 $(document).ready(function () {
 	// Abre o chatbot ao clicar no botão de abrir
@@ -84,23 +78,42 @@ $(document).ready(function () {
 	});
 });
 
+const checkInput = () => {
+	let userReqInput = `${userRequestInput.val()}`;
+	(userReqInput.split(' ').length < 2 && userReqInput == 'Oi') ||
+	userReqInput == 'oi' ||
+	userReqInput == 'OI' ||
+	userReqInput == 'Oi' ||
+	userReqInput == 'Oi!' ||
+	userReqInput == 'ola' ||
+	userReqInput == 'olá' ||
+	userReqInput == 'Ola' ||
+	userReqInput == 'Olá' ||
+	userReqInput == 'Olá!' ||
+	userReqInput == 'obrigado' ||
+	userReqInput == 'Obrigado' ||
+	userReqInput == 'obrigada' ||
+	userReqInput == 'Obrigada' ||
+	userReqInput == 'tchau' ||
+	userReqInput == 'Tchau' ||
+	userReqInput == 'tchau!' ||
+	userReqInput == 'Tchau!' ||
+	userReqInput == 'tchau.' ||
+	userReqInput == 'Tchau.'
+		? (userReqInput = 'Retorne com uma saudação!')
+		: userReqInput.match(/[!?.]/g)
+		? (userReqInput = userReqInput)
+		: (userReqInput = userReqInput + '.');
+
+	return userReqInput;
+};
+
 const BotResponse = () => {
 	let ResID = userRequestsList.length;
 	let prefixHuman = '\nH: ';
 	let history = localStorage.getItem('history');
 	let userReqInput = `${userRequestInput.val()}`;
-	(userReqInput.split(' ').length < 2 && userReqInput == 'Oi') ||
-	userReqInput == 'oi' ||
-	userReqInput == 'Ola' ||
-	userReqInput == 'ola' ||
-	userReqInput == 'Olá' ||
-	userReqInput == 'olá' ||
-	userReqInput == 'obrigado' ||
-	userReqInput == 'Obrigado' ||
-	userReqInput == 'obrigada' ||
-	userReqInput == 'Obrigada'
-		? (userReqInput = 'Retorne com uma saudação')
-		: userReqInput;
+	userReqInput = checkInput();
 
 	$('#messagesList').append(`<div class="bot d-flex mb-2">
 										<img
@@ -119,7 +132,7 @@ const BotResponse = () => {
 
 	API(history).then((data) => {
 		localStorage.setItem('history', (history += data + '\n'));
-		// history += data;
+
 		$('#loading').remove();
 		data.split('').forEach((letter, index) => {
 			$(`#messagesList` || `#botRes${ResID}`).on('click', () => clearTimeout(writeTimer));
@@ -166,8 +179,8 @@ const UserRequest = () => {
 			break;
 
 		case false: {
-			userRequestInput.attr('placeholder', 'Digite uma mensagem!');
-			setTimeout(() => userRequestInput.attr('placeholder', 'Qual sua demanda hoje?'), 1000);
+			userRequestInput.val('⚠️ Digite uma mensagem!');
+			setTimeout(() => userRequestInput.val('') & userRequestInput.focus(), 1000);
 			break;
 		}
 	}
